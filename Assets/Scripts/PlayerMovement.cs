@@ -5,16 +5,30 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour {
 	public float force = 200f;
+	public float rotationStep = 1.0f;
 	private Rigidbody rigidBody;
+	private Camera camera;
+	private Quaternion originalCameraRotation;
 
 	// Start is called before the first frame update
 	void Start() {
+		camera = Camera.main;
+		originalCameraRotation = camera.transform.localRotation;
+
 		rigidBody = GetComponent<Rigidbody>();
 	}
 
 	// Update is called once per frame
 	void Update() {
-		Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+		Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), 0,
+			Input.GetAxis("Vertical"));
 		rigidBody.AddForce(direction * force);
+
+		Quaternion cameraTilt = originalCameraRotation;
+		cameraTilt.y += Input.GetAxis("Horizontal") * 0.05f;
+		cameraTilt.x += Input.GetAxis("Vertical") * -0.05f;
+
+		camera.transform.localRotation = Quaternion.Lerp(
+			camera.transform.localRotation, cameraTilt, rotationStep);
 	}
 }
