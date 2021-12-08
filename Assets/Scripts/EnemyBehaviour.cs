@@ -12,12 +12,14 @@ public class EnemyBehaviour : MonoBehaviour {
 	public int cholesterolSpawnTimer = 2;
 	private NavMeshAgent agent;
 	private int timer;
+	private System.Random random;
 
 	// Start is called before the first frame update
 	void Start() {
 		if (waypointContainer == null)
 			throw new Exception("Waypoint container is required");
 
+		random = new System.Random(123456789);
 		agent = GetComponent<NavMeshAgent>();
 		agent.SetDestination(waypointContainer.transform.position);
 
@@ -38,7 +40,7 @@ public class EnemyBehaviour : MonoBehaviour {
 	}
 
 	private void GoToNextWaypoint() {
-		int index = new System.Random().Next(waypointContainer.transform.childCount - 1);
+		int index = random.Next(waypointContainer.transform.childCount - 1);
 		agent.SetDestination(waypointContainer.transform.GetChild(index).position);
 	}
 
@@ -47,7 +49,7 @@ public class EnemyBehaviour : MonoBehaviour {
 	}
 
 	private void RandomlySpawnCholesterol() {
-		if (new System.Random().Next(20) > 18) {
+		if (random.Next(20) > 18) {
 			GameObject cholesterol = Instantiate(cholesterolPrefab, transform.position, transform.rotation);
 			cholesterol.GetComponent<EnemyDrop>().PointsTextField = pointsText;
 		}
