@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -214,7 +214,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &753412423
 GameObject:
@@ -545,6 +545,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -595,7 +596,7 @@ Transform:
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &991037903
 Rigidbody:
@@ -707,6 +708,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -757,7 +759,7 @@ Transform:
   m_LocalScale: {x: 1000, y: 1, z: 1000}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1266631989
 GameObject:
@@ -882,7 +884,7 @@ RectTransform:
   m_Children:
   - {fileID: 753412424}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1079,9 +1081,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 37534868003343352, guid: f1bfe4f0d24b0c245903f37f6083cffd, type: 3}
+      propertyPath: dropPrefab
+      value: 
+      objectReference: {fileID: 2492799817915131002, guid: 4e45f1c31acf2a247ab0dfee94ee65fa, type: 3}
+    - target: {fileID: 37534868003343352, guid: f1bfe4f0d24b0c245903f37f6083cffd, type: 3}
       propertyPath: pointsText
       value: 
       objectReference: {fileID: 753412423}
+    - target: {fileID: 37534868003343352, guid: f1bfe4f0d24b0c245903f37f6083cffd, type: 3}
+      propertyPath: randomSeed
+      value: 1234567
+      objectReference: {fileID: 0}
     - target: {fileID: 37534868003343352, guid: f1bfe4f0d24b0c245903f37f6083cffd, type: 3}
       propertyPath: waypointContainer
       value: 
@@ -1092,7 +1102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 37534868003343354, guid: f1bfe4f0d24b0c245903f37f6083cffd, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 37534868003343354, guid: f1bfe4f0d24b0c245903f37f6083cffd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1154,7 +1164,7 @@ Transform:
   - {fileID: 1697627108}
   - {fileID: 1046932771}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &919132148197762723
 GameObject:
@@ -1183,6 +1193,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1334,6 +1345,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -1364,3 +1376,76 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &8023713272601895435
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 116056960199643087, guid: 4780130ae6600704e9b936fff9bf28c8, type: 3}
+      propertyPath: dropPrefab
+      value: 
+      objectReference: {fileID: 2492799817915131002, guid: 82d45e7793970274e9263d1b29356e58, type: 3}
+    - target: {fileID: 116056960199643087, guid: 4780130ae6600704e9b936fff9bf28c8, type: 3}
+      propertyPath: pointsText
+      value: 
+      objectReference: {fileID: 753412423}
+    - target: {fileID: 116056960199643087, guid: 4780130ae6600704e9b936fff9bf28c8, type: 3}
+      propertyPath: randomSeed
+      value: 696969
+      objectReference: {fileID: 0}
+    - target: {fileID: 116056960199643087, guid: 4780130ae6600704e9b936fff9bf28c8, type: 3}
+      propertyPath: waypointContainer
+      value: 
+      objectReference: {fileID: 1046932770}
+    - target: {fileID: 7317915267334207356, guid: 4780130ae6600704e9b936fff9bf28c8, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317915267334207356, guid: 4780130ae6600704e9b936fff9bf28c8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.5427444
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317915267334207356, guid: 4780130ae6600704e9b936fff9bf28c8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.401
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317915267334207356, guid: 4780130ae6600704e9b936fff9bf28c8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -17.346
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317915267334207356, guid: 4780130ae6600704e9b936fff9bf28c8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317915267334207356, guid: 4780130ae6600704e9b936fff9bf28c8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317915267334207356, guid: 4780130ae6600704e9b936fff9bf28c8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317915267334207356, guid: 4780130ae6600704e9b936fff9bf28c8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317915267334207356, guid: 4780130ae6600704e9b936fff9bf28c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317915267334207356, guid: 4780130ae6600704e9b936fff9bf28c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317915267334207356, guid: 4780130ae6600704e9b936fff9bf28c8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7981967907371134406, guid: 4780130ae6600704e9b936fff9bf28c8, type: 3}
+      propertyPath: m_Name
+      value: Ice Cream
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4780130ae6600704e9b936fff9bf28c8, type: 3}

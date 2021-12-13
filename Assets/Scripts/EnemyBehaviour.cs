@@ -7,9 +7,10 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyBehaviour : MonoBehaviour {
 	public GameObject waypointContainer;
-	public GameObject cholesterolPrefab;
+	public GameObject dropPrefab;
 	public GameObject pointsText;
-	public int cholesterolSpawnTimer = 2;
+	public int dropSpawnTimer = 2;
+	public int randomSeed;
 	private NavMeshAgent agent;
 	private int timer;
 	private System.Random random;
@@ -19,7 +20,7 @@ public class EnemyBehaviour : MonoBehaviour {
 		if (waypointContainer == null)
 			throw new Exception("Waypoint container is required");
 
-		random = new System.Random(123456789);
+		random = new System.Random(randomSeed);
 		agent = GetComponent<NavMeshAgent>();
 		agent.SetDestination(waypointContainer.transform.position);
 
@@ -33,7 +34,7 @@ public class EnemyBehaviour : MonoBehaviour {
 	}
 
 	private void FixedUpdate() {
-		if (timer > (cholesterolSpawnTimer * 30))
+		if (timer > (dropSpawnTimer * 30))
 			RandomlySpawnCholesterol();
 
 		timer++;
@@ -50,7 +51,7 @@ public class EnemyBehaviour : MonoBehaviour {
 
 	private void RandomlySpawnCholesterol() {
 		if (random.Next(20) > 18) {
-			GameObject cholesterol = Instantiate(cholesterolPrefab, transform.position, transform.rotation);
+			GameObject cholesterol = Instantiate(dropPrefab, transform.position, transform.rotation);
 			cholesterol.GetComponent<EnemyDrop>().PointsTextField = pointsText;
 		}
 	}
