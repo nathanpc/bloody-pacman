@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyDrop : MonoBehaviour {
+	public string name;
 	public ParticleSystem particles;
 	public float dieSpeed = 0.03f;
 	private GameObject _pointsText;
@@ -26,6 +27,9 @@ public class EnemyDrop : MonoBehaviour {
 			return;
 
 		if (col.tag == "Player") {
+			if (col.GetComponent<PlayerBehaviour>().KillsDropNamed != name)
+				return;
+
 			tracker.CountUp();
 			particles.Play();
 			StartCoroutine(WaitToDie());

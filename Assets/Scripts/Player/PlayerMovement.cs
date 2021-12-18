@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(PlayerBehaviour))]
 public class PlayerMovement : MonoBehaviour {
 	public float force = 200f;
 	public float rotationStep = 1.0f;
