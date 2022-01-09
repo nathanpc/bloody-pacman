@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour {
 	public float force = 200f;
 	public float rotationStep = 1.0f;
 	private Rigidbody rigidBody;
-	private Camera camera;
+	private new Camera camera;
 	private Quaternion originalCameraRotation;
 
 	// Start is called before the first frame update
@@ -19,8 +19,7 @@ public class PlayerMovement : MonoBehaviour {
 		rigidBody = GetComponent<Rigidbody>();
 	}
 
-	// Update is called once per frame
-	void Update() {
+	void FixedUpdate() {
 		Vector3 direction = new Vector3(Input.GetAxis("Horizontal"), 0,
 			Input.GetAxis("Vertical"));
 		rigidBody.AddForce(direction * force);

@@ -613,6 +613,38 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218433732}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &238512652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 238512653}
+  m_Layer: 0
+  m_Name: Enemy Waypoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &238512653
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 238512652}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 327778592}
+  - {fileID: 610072640}
+  m_Father: {fileID: 1186174803}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &240061518
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -852,7 +884,7 @@ GameObject:
   m_Component:
   - component: {fileID: 327778592}
   m_Layer: 0
-  m_Name: Waypoints
+  m_Name: Hamburger Waypoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -866,8 +898,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 327778591}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.9222221, y: -0.0044443873, z: 0.2777778}
-  m_LocalScale: {x: 4.4444447, y: 2.777778, z: 4.4444447}
+  m_LocalPosition: {x: -0.70000005, y: -3.384, z: -18.36}
+  m_LocalScale: {x: 4, y: 2.5, z: 4}
   m_Children:
   - {fileID: 1011624008}
   - {fileID: 2114975578}
@@ -887,8 +919,8 @@ Transform:
   - {fileID: 825312190}
   - {fileID: 1845530399}
   - {fileID: 1021957363}
-  m_Father: {fileID: 1695787066}
-  m_RootOrder: 5
+  m_Father: {fileID: 238512653}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &336442885
 GameObject:
@@ -1691,7 +1723,7 @@ GameObject:
   m_Component:
   - component: {fileID: 610072640}
   m_Layer: 0
-  m_Name: Waypoints
+  m_Name: Ice Cream Waypoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1704,9 +1736,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 610072639}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.70000005, y: -3.384, z: -18.36}
+  m_LocalScale: {x: 4, y: 2.5, z: 4}
   m_Children:
   - {fileID: 1944168956}
   - {fileID: 1774821099}
@@ -1726,8 +1758,8 @@ Transform:
   - {fileID: 1042597026}
   - {fileID: 1099195941}
   - {fileID: 1343014814}
-  m_Father: {fileID: 837660867}
-  m_RootOrder: 8
+  m_Father: {fileID: 238512653}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &614415462
 GameObject:
@@ -3838,6 +3870,7 @@ Transform:
   m_Children:
   - {fileID: 837660867}
   - {fileID: 1695787066}
+  - {fileID: 238512653}
   m_Father: {fileID: 1013387735}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
