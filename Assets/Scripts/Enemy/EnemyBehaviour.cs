@@ -11,12 +11,15 @@ public class EnemyBehaviour : MonoBehaviour {
 
 	[Header("Drops")]
 	public GameObject dropPrefab;
-	public GameObject pointsText;
 	public int dropSpawnTimer = 2;
 	public int randomSeed;
 
+	[Header("Counters")]
+	public PointsTracker pointsCounter;
+	public SliderHandler dropsCounter;
+
 	private NavMeshAgent agent;
-	private int startupTimer;
+	private int dropTimer;
 	private System.Random random;
 
 	// Start is called before the first frame update
@@ -30,8 +33,11 @@ public class EnemyBehaviour : MonoBehaviour {
 		agent = GetComponent<NavMeshAgent>();
 		agent.SetDestination(waypointContainer.transform.position);
 
-		// Reset the startup timer.
-		startupTimer = 0;
+		// Reset the drop timer.
+		dropTimer = 0;
+
+		// Make sure the counter is initialized even if inactive.
+		pointsCounter.Initialize();
 	}
 
 	// Update is called once per frame
@@ -43,12 +49,11 @@ public class EnemyBehaviour : MonoBehaviour {
 
 	private void FixedUpdate() {
 		// Check if its time to start spawning drops.
-		if (startupTimer > (dropSpawnTimer * 30)) {
+		if (dropTimer > (dropSpawnTimer * 30))
 			RandomlySpawnDrop();
-		} else {
-			// Advance the startup timer.
-			startupTimer++;
-		}
+
+		// Advance the drop timer.
+		dropTimer++;
 	}
 
 	/// <summary>
@@ -72,9 +77,22 @@ public class EnemyBehaviour : MonoBehaviour {
 	/// Randomly spawns drops.
 	/// </summary>
 	private void RandomlySpawnDrop() {
-		if (random.Next(20) > 18) {
-			GameObject cholesterol = Instantiate(dropPrefab, transform.position, transform.rotation);
-			cholesterol.GetComponent<EnemyDrop>().PointsTextField = pointsText;
+		// Randomly spawn shit.
+		if (random.Next(20) > 10) {
+			// Spawn drop.
+			GameObject cholesterol = Instantiate(dropPrefab, transform.position,
+				transform.rotation);
+			EnemyDrop drop = cholesterol.GetComponent<EnemyDrop>();
+
+			// Count one for the team.
+			dropsCounter.CountUp();
+
+			// Assign counters.
+			drop.PointsCounter = pointsCounter;
+			drop.DropsCounter = dropsCounter;
 		}
+
+		// Reset the drop timer.
+		dropTimer = 0;
 	}
 }

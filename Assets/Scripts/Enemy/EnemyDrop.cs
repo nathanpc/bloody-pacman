@@ -13,8 +13,8 @@ public class EnemyDrop : MonoBehaviour {
 	public ParticleSystem particles;
 	public float dieSpeed = 0.03f;
 
-	private GameObject _pointsText;
-	private PointsTracker tracker;
+	private ICounter _pointsCounter;
+	private ICounter _elementsBar;
 	private bool isDying = false;
 
 	void FixedUpdate() {
@@ -33,10 +33,6 @@ public class EnemyDrop : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider col) {
-		// If we are not tracking, then just ignore this.
-		if (tracker == null)
-			return;
-
 		// Check if the player actually collided with us.
 		if (col.tag == "Player") {
 			// If the player that collided isn't active then ignore it.
@@ -47,8 +43,9 @@ public class EnemyDrop : MonoBehaviour {
 			if (col.GetComponent<PlayerBehaviour>().KillsDropNamed != name)
 				return;
 
-			// Count up the score.
-			tracker.CountUp();
+			// Count things.
+			PointsCounter.CountUp();
+			DropsCounter.CountDown();
 
 			// Do a whole dance.
 			particles.Play();
@@ -57,14 +54,19 @@ public class EnemyDrop : MonoBehaviour {
 	}
 
 	/// <summary>
-	/// Points tracker label.
+	/// Points counter.
 	/// </summary>
-	public GameObject PointsTextField {
-		get { return _pointsText; }
-		set {
-			_pointsText = value;
-			tracker = _pointsText.GetComponent<PointsTracker>();
-		}
+	public ICounter PointsCounter {
+		get { return _pointsCounter; }
+		set { _pointsCounter = value; }
+	}
+
+	/// <summary>
+	/// Drops counter bar.
+	/// </summary>
+	public ICounter DropsCounter {
+		get { return _elementsBar; }
+		set { _elementsBar = value; }
 	}
 
 	/// <summary>
