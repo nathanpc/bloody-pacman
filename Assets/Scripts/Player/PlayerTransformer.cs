@@ -22,10 +22,12 @@ public class PlayerTransformer : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
+		// Do the nice animation.
 		DoFloatAnimation();
 	}
 
 	void OnTriggerEnter(Collider col) {
+		// Has the player collided with us?
 		if (col.tag == "Player")
 			TransformPlayer(col.gameObject);
 	}
