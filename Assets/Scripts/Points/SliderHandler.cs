@@ -15,8 +15,8 @@ public class SliderHandler : MonoBehaviour, ICounter {
 	public int maxValue = 100;
 	private int counter = 0;
 
-	private void Start() {
-	}
+	[Header("Misc.")]
+	public GameStateManager gameStateManager;
 
 	/// <summary>
 	/// Updates the slider control.
@@ -32,6 +32,10 @@ public class SliderHandler : MonoBehaviour, ICounter {
 		// Update the UI elements.
 		slider.value = value;
 		fill.fillAmount = value;
+
+		// Check if we are over.
+		if (value == 1f)
+			gameStateManager.GameOver();
 	}
 
 	public void CountUp() {
