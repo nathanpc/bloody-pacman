@@ -76,7 +76,9 @@ public class GameConfigurator : MonoBehaviour {
 
 		// Setup enemies.
 		hamburger.dropSpawnTimer = dropTimer;
+		hamburger.GameManager = gameStateManager;
 		iceCream.dropSpawnTimer = dropTimer;
+		iceCream.GameManager = gameStateManager;
 
 		// Setup player.
 		broccoli.force = force;

@@ -18,6 +18,7 @@ public class EnemyBehaviour : MonoBehaviour {
 	public PointsTracker pointsCounter;
 	public SliderHandler dropsCounter;
 
+	private GameStateManager _gameStateManager;
 	private NavMeshAgent agent;
 	private int dropTimer;
 	private System.Random random;
@@ -54,6 +55,18 @@ public class EnemyBehaviour : MonoBehaviour {
 
 		// Advance the drop timer.
 		dropTimer++;
+	}
+
+	void OnTriggerEnter(Collider col) {
+		// Check if the player actually collided with us.
+		if (col.tag == "Player") {
+			// If the player that collided isn't active then ignore it.
+			if (!col.gameObject.activeInHierarchy)
+				return;
+
+			// Time to die!
+			GameManager.GameOver();
+		}
 	}
 
 	/// <summary>
@@ -94,5 +107,13 @@ public class EnemyBehaviour : MonoBehaviour {
 
 		// Reset the drop timer.
 		dropTimer = 0;
+	}
+
+	/// <summary>
+	/// Game state manager.
+	/// </summary>
+	public GameStateManager GameManager {
+		get { return _gameStateManager; }
+		set { _gameStateManager = value; }
 	}
 }
