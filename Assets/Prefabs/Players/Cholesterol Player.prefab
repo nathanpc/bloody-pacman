@@ -78,6 +78,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 25
   rotationStep: 0.1
+  moveCamera: 0
+  cameraMovementIntensity: 0.05
 --- !u!114 &7177281533165602747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -161,6 +163,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c9dc8d94840fb9a48a9fd6e84747d7a3, type: 3}
       propertyPath: m_Name
       value: Broccoli
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c9dc8d94840fb9a48a9fd6e84747d7a3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9dc8d94840fb9a48a9fd6e84747d7a3, type: 3}
