@@ -13,12 +13,10 @@ public class PlayerTransformer : MonoBehaviour {
 
 	[Header("Player")]
 	public GameObject targetPlayer;
-	private Rigidbody targetRigidBody;
 
 	// Start is called before the first frame update
 	void Start() {
 		originalPosition = transform.position;
-		targetRigidBody = targetPlayer.GetComponent<Rigidbody>();
 	}
 
 	void FixedUpdate() {
@@ -52,17 +50,10 @@ public class PlayerTransformer : MonoBehaviour {
 		if (player == targetPlayer)
 			return;
 
-		// Get the current player's RigidBody.
-		Rigidbody playerRigidBody = player.GetComponent<Rigidbody>();
-
 		// Setup the position of the target player.
 		Vector3 position = player.transform.position;
 		position.y = targetPlayer.transform.position.y;
 		targetPlayer.transform.position = position;
-
-		// Reset the physics of the target player.
-		targetRigidBody.velocity = playerRigidBody.velocity;
-		targetRigidBody.angularVelocity = playerRigidBody.angularVelocity;
 
 		// Actually switch.
 		player.SetActive(false);

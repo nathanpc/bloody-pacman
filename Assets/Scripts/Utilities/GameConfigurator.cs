@@ -25,10 +25,7 @@ public class GameConfigurator : MonoBehaviour {
 	public int dropTimer = 1;
 
 	[Header("Player")]
-	public PlayerMovement broccoli;
-	public PlayerMovement sugarDaddy;
-	public float force = 25f;
-	public float rotationStep = 0.1f;
+	public PlayerMovement playerMovement;
 
 	// Start is called before the first frame update
 	void Start() {
@@ -79,12 +76,6 @@ public class GameConfigurator : MonoBehaviour {
 		hamburger.GameManager = gameStateManager;
 		iceCream.dropSpawnTimer = dropTimer;
 		iceCream.GameManager = gameStateManager;
-
-		// Setup player.
-		broccoli.force = force;
-		broccoli.rotationStep = rotationStep;
-		sugarDaddy.force = force;
-		sugarDaddy.rotationStep = rotationStep;
 	}
 
 	/// <summary>
@@ -92,8 +83,7 @@ public class GameConfigurator : MonoBehaviour {
 	/// </summary>
 	protected void SetupForDesktop() {
 		// Controller.
-		broccoli.controller = desktopController;
-		sugarDaddy.controller = desktopController;
+		playerMovement.controller = desktopController;
 	}
 
 	/// <summary>
@@ -101,7 +91,6 @@ public class GameConfigurator : MonoBehaviour {
 	/// </summary>
 	protected void SetupForMobile() {
 		// Controller.
-		broccoli.controller = mobileController;
-		sugarDaddy.controller = mobileController;
+		playerMovement.controller = mobileController;
 	}
 }
