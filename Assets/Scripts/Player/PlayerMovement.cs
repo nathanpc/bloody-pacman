@@ -35,7 +35,7 @@ public class PlayerMovement : MonoBehaviour {
 		transform.Rotate(0, controller.HorizontalMovement() * rotationSpeed, 0);
 
 		// Keep the player moving forward.
-		Vector3 forward = transform.TransformDirection(Vector3.forward);
+		Vector3 forward = transform.TransformDirection(Vector3.forward) * controller.VerticalMovement();
 		rigidBody.AddForce(forward * movementSpeed, ForceMode.VelocityChange);
 
 		/*
